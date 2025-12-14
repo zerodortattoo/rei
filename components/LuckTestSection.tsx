@@ -110,21 +110,21 @@ interface LuckTestSectionProps {
 export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart }) => {
     const bloxProducts = [
         {
-            id: "luck-1000",
-            title: "[ 🌍 ⚔️ ] Level +1000 (GARANTIDO)",
-            oldPrice: 4.00,
-            price: 1.50,
-            discount: 62,
-            badges: ["CONTAS"],
-            imageGradient: "bg-gradient-to-br from-green-600 to-green-900",
-            imageText: "LEVEL +1000",
-            description: "Conta garantida nível 1000-2800. Chance de itens lendários, frutas e mais."
+            id: "1",
+            title: "Conta Level 1000+ (Blox Fruits)",
+            oldPrice: 10.00,
+            price: 5.00,
+            discount: 50,
+            badges: ["Entrega Imediata", "Promoção"],
+            imageGradient: "from-blue-600 to-blue-900",
+            imageText: "LVL 1000+",
+            description: "Conta upada até level 1000+ garantido. Pode conter frutas ou espadas aleatórias."
         },
         {
             id: "luck-max",
             title: "[ 🍀 🌟 ] Teste sua sorte (TODAS LV MAX)",
-            oldPrice: 7.00,
-            price: 3.50,
+            oldPrice: 14.00,
+            price: 7.00,
             discount: 50,
             badges: ["HOT"],
             imageGradient: "bg-gradient-to-br from-yellow-600 to-yellow-800",
@@ -134,9 +134,9 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
         {
             id: "mythical-1",
             title: "[ 🌍 🍎 ] +1 Fruta Mítica Aleatoria",
-            oldPrice: 13.50,
-            price: 5.00,
-            discount: 62,
+            oldPrice: 15.00,
+            price: 6.00,
+            discount: 60,
             badges: ["RARE"],
             imageGradient: "bg-gradient-to-br from-red-600 to-red-900",
             imageText: "1-3 FRUTAS ALEATÓRIAS",
