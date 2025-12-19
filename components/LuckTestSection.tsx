@@ -276,7 +276,7 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             id: "8ball-500m",
             title: "[ 🎱 💰 ] 500 Milhões de Fichas",
             oldPrice: 80.00,
-            price: 24.50,
+            price: 33.00,
             discount: 37,
             badges: ["POPULAR", "REI DAS CONTAS"],
             imageUrl: "/fichas_8ball_500m.jpg",
