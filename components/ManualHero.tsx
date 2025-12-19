@@ -53,13 +53,25 @@ export const ManualHero: React.FC = () => {
                                 Nosso sistema identifica seu pagamento e libera a retirada do pedido na hora, com total segurança.
                             </p>
 
-                            <button
-                                onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="inline-flex items-center gap-2 bg-[#F5C518] hover:bg-[#ffd644] text-black font-bold px-8 py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(245,197,24,0.3)] hover:scale-105 group"
-                            >
-                                Ver Ofertas
-                                <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            <div className="flex flex-wrap gap-4">
+                                <button
+                                    onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="inline-flex items-center gap-2 bg-[#F5C518] hover:bg-[#ffd644] text-black font-bold px-8 py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(245,197,24,0.3)] hover:scale-105 group"
+                                >
+                                    Ver Ofertas
+                                    <ChevronRight className="w-5 h-5 text-black group-hover:translate-x-1 transition-transform" />
+                                </button>
+
+                                <a
+                                    href="https://discord.gg/2C5A3CSw"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold px-8 py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(88,101,242,0.3)] hover:scale-105"
+                                >
+                                    <MessageCircle className="w-5 h-5 text-white" />
+                                    Discord
+                                </a>
+                            </div>
                         </div>
 
                         {/* Visual Icon/Element on the Right */}

@@ -276,12 +276,23 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             id: "8ball-500m",
             title: "[ 🎱 💰 ] 500 Milhões de Fichas",
             oldPrice: 80.00,
-            price: 50.00,
+            price: 24.50,
             discount: 37,
             badges: ["POPULAR", "REI DAS CONTAS"],
             imageUrl: "/fichas_8ball_500m.jpg",
             imageText: "",
             description: "Pacote de 500 Milhões de Fichas para 8 Ball Pool. Promoção Imperdível!"
+        },
+        {
+            id: "8ball-1b",
+            title: "[ 🎱 👑 ] 1 Bilhão de Fichas (VIP)",
+            oldPrice: 150.00,
+            price: 65.00,
+            discount: 56,
+            badges: ["VIP", "MELHOR CUSTO"],
+            imageUrl: "/pool_1b_vip.jpg",
+            imageText: "",
+            description: "Pacote VIP de 1 Bilhão de Fichas. A escolha dos mestres."
         }
     ];
 
