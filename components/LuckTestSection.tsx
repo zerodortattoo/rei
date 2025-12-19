@@ -10,7 +10,7 @@ interface ProductCardProps {
     price: number;
     discount: number;
     badges: string[];
-    imageGradient: string;
+    imageUrl: string;
     imageText: string;
     description?: string; // Hidden in card but used for cart
     onAddToCart: (item: Omit<CartItem, 'cartId'>) => void;
@@ -18,7 +18,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
-    id, title, oldPrice, price, discount, badges, imageGradient, imageText, description, onAddToCart, buttonColor = 'blue'
+    id, title, oldPrice, price, discount, badges, imageUrl, imageText, description, onAddToCart, buttonColor = 'blue'
 }) => {
     const buttonStyles = buttonColor === 'gold'
         ? "bg-[#F5C518] hover:bg-[#ffd644] text-black shadow-yellow-900/20"
@@ -31,7 +31,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
     return (
         <div className="bg-[#18181b] rounded-xl border border-[#3f3f46] overflow-hidden hover:border-[#F5C518] transition-all group">
             {/* Image Area */}
-            <div className={`h-32 ${imageGradient} relative p-4 flex flex-col items-center justify-center text-center overflow-hidden`}>
+            <div
+                className="h-32 relative p-4 flex flex-col items-center justify-center text-center overflow-hidden bg-cover bg-center"
+                style={{ backgroundImage: `url('${imageUrl}?v=1')` }}
+            >
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                 <h3 className="relative z-10 text-2xl font-black text-white italic tracking-tighter uppercase drop-shadow-md">
                     {imageText}
@@ -110,14 +113,36 @@ interface LuckTestSectionProps {
 export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart }) => {
     const bloxProducts = [
         {
+            id: "mystery-box-1",
+            title: "[ 📦 🎲 ] MYSTERY BOX (Lvl 1000-2550)",
+            oldPrice: 15.00,
+            price: 6.90,
+            discount: 54,
+            badges: ["JACKPOT", "GODHUMAN"],
+            imageUrl: "/luck_test_blox_fruits.jpg",
+            imageText: "",
+            description: "Chance de JACKPOT (Lvl Max). Garantido: Lvl 1000+ e Godhuman. Pode vir: Dough, Leopard, CDK, Soul Guitar. Teste sua sorte!"
+        },
+        {
+            id: "max-godhuman-1",
+            title: "[ ⚡ 👑 ] CONTA MAX (GODHUMAN + CDK)",
+            oldPrice: 55.00,
+            price: 19.90,
+            discount: 63,
+            badges: ["META PVP", "ENTREGA AUTO"],
+            imageUrl: "/godhuman_cdk_blox_fruits.jpg",
+            imageText: "",
+            description: "Nível 2550. Godhuman + CDK Garantidos. Milhões de Beli. Conta Limpa e Full Acesso."
+        },
+        {
             id: "1",
             title: "Conta Level 1000+ (Blox Fruits)",
             oldPrice: 10.00,
             price: 5.00,
             discount: 50,
             badges: ["Entrega Imediata", "Promoção"],
-            imageGradient: "from-blue-600 to-blue-900",
-            imageText: "LVL 1000+",
+            imageUrl: "/conta_level_1000_blox_fruits.jpg",
+            imageText: "",
             description: "Conta upada até level 1000+ garantido. Pode conter frutas ou espadas aleatórias."
         },
         {
@@ -127,8 +152,8 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 10.00,
             discount: 50,
             badges: ["HOT"],
-            imageGradient: "bg-gradient-to-br from-yellow-600 to-yellow-800",
-            imageText: "TESTE SUA SORTE",
+            imageUrl: "/mystery_box_loot_blox_fruits.jpg",
+            imageText: "",
             description: "Level 2800 Garantido. Chance de Godhuman, CDK, Soul Guitar e Frutas Míticas."
         },
         {
@@ -138,8 +163,8 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 7.00,
             discount: 53,
             badges: ["RARE"],
-            imageGradient: "bg-gradient-to-br from-red-600 to-red-900",
-            imageText: "1-3 FRUTAS ALEATÓRIAS",
+            imageUrl: "/fruta_mitica_1.jpg",
+            imageText: "",
             description: "Contém 1 a 3 Frutas Míticas no inventário (Dragon, Kitsune, Leopard, etc)."
         },
         {
@@ -149,8 +174,8 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 9.50,
             discount: 52,
             badges: ["BEST SELLER"],
-            imageGradient: "bg-gradient-to-br from-purple-600 to-purple-900",
-            imageText: "2-6 FRUTAS ALEATÓRIAS",
+            imageUrl: "/fruta_mitica_2.jpg",
+            imageText: "",
             description: "Contém 2 a 6 Frutas Míticas no inventário. Alta chance de Kitsune."
         },
         {
@@ -160,8 +185,8 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 19.90,
             discount: 71,
             badges: ["REWORK"],
-            imageGradient: "bg-gradient-to-br from-orange-500 to-orange-800",
-            imageText: "LEOPARD",
+            imageUrl: "/leopard_fruit_blox_fruits.jpg",
+            imageText: "",
             description: "Conta com Leopard (Tiger) garantida no inventário."
         },
         {
@@ -171,8 +196,8 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 29.90,
             discount: 50,
             badges: ["MYTHICAL"],
-            imageGradient: "bg-gradient-to-br from-blue-400 to-blue-700",
-            imageText: "KITSUNE",
+            imageUrl: "/blox_kitsune.jpg",
+            imageText: "",
             description: "Conta com Kitsune garantida no inventário."
         },
         {
@@ -182,8 +207,8 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 14.50,
             discount: 51,
             badges: ["NEW"],
-            imageGradient: "bg-gradient-to-br from-cyan-500 to-cyan-800",
-            imageText: "YETI / ICE",
+            imageUrl: "/ice_yeti_new.jpg",
+            imageText: "",
             description: "Conta com Yeti (Ice Awakened/Mythical) no inventário."
         },
         {
@@ -193,9 +218,45 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             price: 9.90,
             discount: 50,
             badges: ["META"],
-            imageGradient: "bg-gradient-to-br from-gray-600 to-gray-800",
-            imageText: "GAS",
+            imageUrl: "/gas_fruit_new.jpg",
+            imageText: "",
             description: "Conta com Gas Fruit garantida."
+        }
+    ];
+
+    const lolProducts = [
+        {
+            id: "lol-main-ultimates",
+            title: "[ 💎 🔥 ] CONTA MAIN - DJ SONA + MF ULTIMATE",
+            oldPrice: 350.00,
+            price: 139.90,
+            discount: 60,
+            badges: ["2 ULTIMATES", "FULL ACESSO"],
+            imageUrl: "/lol_ultimates.jpg",
+            imageText: "",
+            description: "Conta Level 80+. 2 Ultimates (DJ Sona, MF Vingadora). 3 Lendárias, 55 Skins Total. 134 Campeões. Full Acesso!"
+        },
+        {
+            id: "lol-smurf-30",
+            title: "[ ⚡ 🔓 ] SMURF LEVEL 30+ (ENTRADA)",
+            oldPrice: 40.00,
+            price: 19.90,
+            discount: 50,
+            badges: ["SMURF", "UNRANKED"],
+            imageUrl: "/conta_lol_smurf_poro.png",
+            imageText: "",
+            description: "Nível 30+. Unranked. Pronta para Ranked. Full Acesso. A melhor opção para começar."
+        },
+        {
+            id: "lol-titan-225",
+            title: "[ 🔥 🛡️ ] CONTA TITÃ (138 CHAMPS + 15k EA)",
+            oldPrice: 450.00,
+            price: 129.90,
+            discount: 71,
+            badges: ["LVL 225", "138 CHAMPS"],
+            imageUrl: "/conta_lol_tita_138_champs.png",
+            imageText: "",
+            description: "Level 225. 138 Campeões (Quase todos). 77 Skins. 15k Essência Azul. Conta antiga e segura. Full Acesso."
         }
     ];
 
@@ -204,12 +265,12 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             id: "8ball-100m",
             title: "[ 🎱 💰 ] 100 Milhões de Fichas",
             oldPrice: 40.00,
-            price: 25.00,
-            discount: 37,
-            badges: ["ENTREGA RÁPIDA"],
-            imageGradient: "bg-gradient-to-br from-blue-600 to-blue-900",
-            imageText: "100 MILHÕES",
-            description: "Pacote de 100 Milhões de Fichas para 8 Ball Pool."
+            price: 14.90,
+            discount: 62,
+            badges: ["ENTREGA RÁPIDA", "PARCEIRO OFICIAL"],
+            imageUrl: "/fichas_8ball_100m.jpg",
+            imageText: "",
+            description: "Pacote de 100 Milhões de Fichas para 8 Ball Pool. Preço Promocional!"
         },
         {
             id: "8ball-500m",
@@ -217,21 +278,10 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
             oldPrice: 80.00,
             price: 50.00,
             discount: 37,
-            badges: ["POPULAR"],
-            imageGradient: "bg-gradient-to-br from-indigo-600 to-indigo-900",
-            imageText: "500 MILHÕES",
-            description: "Pacote de 500 Milhões de Fichas para 8 Ball Pool."
-        },
-        {
-            id: "8ball-1b",
-            title: "[ 🎱 👑 ] 1 Bilhão de Fichas (VIP)",
-            oldPrice: 150.00,
-            price: 100.00,
-            discount: 33,
-            badges: ["VIP"],
-            imageGradient: "bg-gradient-to-br from-yellow-600 to-yellow-900",
-            imageText: "1 BILHÃO",
-            description: "Pacote de 1 Bilhão de Fichas para 8 Ball Pool. Torne-se um milionário!"
+            badges: ["POPULAR", "REI DAS CONTAS"],
+            imageUrl: "/fichas_8ball_500m.jpg",
+            imageText: "",
+            description: "Pacote de 500 Milhões de Fichas para 8 Ball Pool. Promoção Imperdível!"
         }
     ];
 
@@ -249,6 +299,29 @@ export const LuckTestSection: React.FC<LuckTestSectionProps> = ({ onAddToCart })
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         {bloxProducts.map(product => (
+                            <ProductCard
+                                key={product.id}
+                                {...product}
+                                onAddToCart={onAddToCart}
+                                buttonColor="gold"
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* League of Legends Section */}
+            <section className="py-8 border-t border-[#3f3f46]/50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex items-center gap-3 mb-8">
+                        <div className="w-8 h-8 rounded-full bg-[#0AC8B9] flex items-center justify-center text-white font-bold border-2 border-white/20">L</div>
+                        <h2 className="text-2xl font-bold text-white uppercase italic tracking-wider">
+                            Contas <span className="text-[#0AC8B9]">League of Legends</span>
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        {lolProducts.map(product => (
                             <ProductCard
                                 key={product.id}
                                 {...product}
