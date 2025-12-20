@@ -44,6 +44,31 @@ export const AffiliateDashboard: React.FC<AffiliateDashboardProps> = ({ session,
             if (ordersData) {
                 setOrders(ordersData);
             }
+        } else {
+            // Profile not found (OAuth user first time) -> Create one
+            const emailPrefix = session.user.email?.split('@')[0] || 'user';
+            const randomSuffix = Math.floor(Math.random() * 10000);
+            const newCode = `${emailPrefix}-${randomSuffix}`.toLowerCase().replace(/[^a-z0-9-]/g, '-');
+
+            const { data: newProfile, error: createError } = await supabase
+                .from('profiles')
+                .insert([
+                    {
+                        id: session.user.id,
+                        email: session.user.email,
+                        role: 'affiliate',
+                        affiliate_code: newCode
+                    }
+                ])
+                .select()
+                .single();
+
+            if (!createError && newProfile) {
+                setProfile(newProfile);
+                // No orders yet for new profile
+            } else {
+                console.error("Error creating profile:", createError);
+            }
         }
         setLoading(false);
     };
