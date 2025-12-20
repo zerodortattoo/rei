@@ -60,7 +60,7 @@ export const AffiliateDashboard: React.FC<AffiliateDashboardProps> = ({ session,
 
     const copyLink = () => {
         if (!profile?.affiliate_code) return;
-        const link = `${window.location.origin}?ref=${profile.affiliate_code}`;
+        const link = `${import.meta.env.VITE_SITE_URL || window.location.origin}?ref=${profile.affiliate_code}`;
         navigator.clipboard.writeText(link);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
@@ -98,7 +98,7 @@ export const AffiliateDashboard: React.FC<AffiliateDashboardProps> = ({ session,
 
                         <div className="flex gap-2 bg-[#18181b] p-3 rounded-lg border border-[#3f3f46]">
                             <code className="flex-1 text-green-400 truncate self-center">
-                                {window.location.origin}?ref={profile?.affiliate_code}
+                                {import.meta.env.VITE_SITE_URL || window.location.origin}?ref={profile?.affiliate_code}
                             </code>
                             <button
                                 onClick={copyLink}
@@ -181,8 +181,8 @@ export const AffiliateDashboard: React.FC<AffiliateDashboardProps> = ({ session,
                                             </td>
                                             <td className="p-4">
                                                 <span className={`px-2 py-1 rounded text-xs font-bold ${order.status === 'approved'
-                                                        ? 'bg-green-500/20 text-green-500'
-                                                        : 'bg-yellow-500/20 text-yellow-500'
+                                                    ? 'bg-green-500/20 text-green-500'
+                                                    : 'bg-yellow-500/20 text-yellow-500'
                                                     }`}>
                                                     {order.status === 'approved' ? 'APROVADO' : 'PENDENTE'}
                                                 </span>

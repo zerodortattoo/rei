@@ -157,7 +157,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({ onBack, onRegisterSu
                                 supabase.auth.signInWithOAuth({
                                     provider: 'google',
                                     options: {
-                                        redirectTo: window.location.origin
+                                        redirectTo: import.meta.env.VITE_SITE_URL || window.location.origin
                                     }
                                 });
                             }}
@@ -176,7 +176,7 @@ export const RegisterView: React.FC<RegisterViewProps> = ({ onBack, onRegisterSu
                                 supabase.auth.signInWithOAuth({
                                     provider: 'discord',
                                     options: {
-                                        redirectTo: window.location.origin
+                                        redirectTo: import.meta.env.VITE_SITE_URL || window.location.origin
                                     }
                                 });
                             }}
