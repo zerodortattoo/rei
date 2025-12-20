@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Trash2, Lock, Tag, ShoppingBag, ArrowLeft, Loader2, CreditCard, QrCode } from 'lucide-react';
 import { CartItem, PaymentData, CardFormData } from '../types';
 import { PaymentService } from '../services/payment';
+import { supabase } from '../lib/supabase';
 
 interface CheckoutViewProps {
   cart: CartItem[];
@@ -45,6 +46,21 @@ export const CheckoutView: React.FC<CheckoutViewProps> = ({ cart, onRemove, onPa
 
     try {
       const paymentData = await PaymentService.createPixPayment(email, total, cart);
+
+      // Save order to Supabase if user is logged in
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        await supabase.from('orders').insert({
+          user_id: session.user.id,
+          items: cart,
+          total: total,
+          status: 'pending',
+          payment_method: 'pix',
+          payment_data: paymentData,
+          payment_id: paymentData.id
+        });
+      }
+
       onPaymentSuccess(email, total, paymentData);
     } catch (error: any) {
       alert(`Erro no pagamento: ${error.message || 'Tente novamente.'}`);

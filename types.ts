@@ -45,3 +45,15 @@ export interface CardFormData {
   cvv: string;
   cpf: string;
 }
+
+export interface Order {
+  id: string; // our db id
+  user_id?: string; // linked user
+  payment_id?: string; // mp id
+  created_at: string;
+  total: number;
+  status: 'pending' | 'approved' | 'expired' | 'paid';
+  items: CartItem[];
+  payment_method: 'pix' | 'card';
+  payment_data?: any; // To store QR code etc
+}

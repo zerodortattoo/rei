@@ -1,32 +1,13 @@
-
-import React, { useState } from 'react';
-import { ArrowLeft, Share2, Copy, Check } from 'lucide-react';
+import React from 'react';
+import { ArrowLeft, Share2, TrendingUp, DollarSign } from 'lucide-react';
 
 interface AffiliateViewProps {
     onBack: () => void;
+    onRegisterClick?: () => void;
+    onLoginClick?: () => void;
 }
 
-export const AffiliateView: React.FC<AffiliateViewProps> = ({ onBack }) => {
-    const [name, setName] = useState('');
-    const [generatedLink, setGeneratedLink] = useState('');
-    const [copied, setCopied] = useState(false);
-
-    const generateLink = () => {
-        if (!name.trim()) return;
-        const cleanName = name.trim().replace(/\s+/g, '-').toLowerCase();
-        const baseUrl = window.location.origin;
-        const link = `${baseUrl}?ref=${cleanName}`;
-        setGeneratedLink(link);
-        setCopied(false);
-    };
-
-    const copyToClipboard = () => {
-        if (!generatedLink) return;
-        navigator.clipboard.writeText(generatedLink);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-    };
-
+export const AffiliateView: React.FC<AffiliateViewProps> = ({ onBack, onRegisterClick, onLoginClick }) => {
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-[60vh]">
             <button
@@ -43,71 +24,47 @@ export const AffiliateView: React.FC<AffiliateViewProps> = ({ onBack }) => {
                     </div>
                     <h1 className="text-3xl font-bold text-white mb-4">Programa de Afiliados</h1>
                     <p className="text-gray-400 max-w-lg mx-auto text-lg mb-8">
-                        Crie seu link personalizado, compartilhe com seus amigos ou seguidores e ganhe <span className="text-[#F5C518] font-bold">20% de comissão</span> por cada venda realizada!
+                        Indique nossos produtos e ganhe <span className="text-[#F5C518] font-bold">20% de comissão</span> em cada venda realizada pelo seu link!
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto">
-                        <div className="bg-[#18181b] p-5 rounded-xl border border-[#3f3f46]">
-                            <div className="text-[#F5C518] font-bold text-lg mb-2">1. Crie</div>
-                            <p className="text-gray-400 text-sm">Gere seu link único com seu nome abaixo. É rápido e gratuito.</p>
-                        </div>
-                        <div className="bg-[#18181b] p-5 rounded-xl border border-[#3f3f46]">
-                            <div className="text-[#F5C518] font-bold text-lg mb-2">2. Divulgue</div>
-                            <p className="text-gray-400 text-sm">Envie para amigos ou poste nas redes sociais.</p>
-                        </div>
-                        <div className="bg-[#18181b] p-5 rounded-xl border border-[#3f3f46]">
-                            <div className="text-[#F5C518] font-bold text-lg mb-2">3. Receba</div>
-                            <p className="text-gray-400 text-sm">Entre em contato via WhatsApp para receber seus pagamentos via Pix.</p>
-                        </div>
+                    {/* Action Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto mb-8">
+                        <button
+                            onClick={onRegisterClick}
+                            className="bg-[#F5C518] text-black font-bold px-8 py-4 rounded-xl hover:bg-[#ffd644] transition-all shadow-[0_0_20px_rgba(245,197,24,0.3)] hover:scale-105 flex-1"
+                        >
+                            Quero Ser Afiliado
+                        </button>
+                        <button
+                            onClick={onLoginClick}
+                            className="bg-[#18181b] text-white font-bold px-8 py-4 rounded-xl border border-[#3f3f46] hover:bg-[#3f3f46] transition-all flex-1"
+                        >
+                            Já tenho conta
+                        </button>
                     </div>
-                </div>
 
-                <div className="p-8 md:p-12 bg-[#18181b]">
-                    <div className="max-w-md mx-auto space-y-6">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-2">
-                                Qual seu nome ou nick?
-                            </label>
-                            <div className="flex gap-2">
-                                <input
-                                    type="text"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    placeholder="ex: joao-gamer"
-                                    className="flex-1 bg-[#27272a] border border-[#3f3f46] rounded-lg px-4 py-3 text-white outline-none focus:border-[#F5C518] transition-all"
-                                    onKeyDown={(e) => e.key === 'Enter' && generateLink()}
-                                />
-                                <button
-                                    onClick={generateLink}
-                                    className="bg-[#F5C518] text-black font-bold px-6 py-3 rounded-lg hover:bg-[#ffd644] transition-colors"
-                                >
-                                    Gerar
-                                </button>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto mt-12">
+                        <div className="bg-[#18181b] p-5 rounded-xl border border-[#3f3f46]">
+                            <div className="text-[#F5C518] font-bold text-lg mb-2 flex items-center gap-2">
+                                <span className="bg-[#F5C518]/10 w-6 h-6 rounded flex items-center justify-center text-xs">1</span>
+                                Crie sua conta
                             </div>
+                            <p className="text-gray-400 text-sm">Cadastro rápido e gratuito. Você terá acesso ao seu painel exclusivo.</p>
                         </div>
-
-                        {generatedLink && (
-                            <div className="animate-in fade-in slide-in-from-top-4">
-                                <label className="block text-sm font-medium text-green-500 mb-2">
-                                    Seu link de afiliado está pronto!
-                                </label>
-                                <div className="bg-[#27272a] border border-green-500/30 rounded-lg p-1 pl-4 flex items-center justify-between group">
-                                    <span className="text-gray-300 truncate mr-2 font-mono text-sm">
-                                        {generatedLink}
-                                    </span>
-                                    <button
-                                        onClick={copyToClipboard}
-                                        className="p-3 bg-green-500/10 hover:bg-green-500/20 text-green-500 rounded-md transition-colors"
-                                        title="Copiar link"
-                                    >
-                                        {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
-                                    </button>
-                                </div>
-                                <p className="text-xs text-gray-500 mt-2 text-center">
-                                    Compartilhe este link. As vendas vindas dele serão rastreadas.
-                                </p>
+                        <div className="bg-[#18181b] p-5 rounded-xl border border-[#3f3f46]">
+                            <div className="text-[#F5C518] font-bold text-lg mb-2 flex items-center gap-2">
+                                <span className="bg-[#F5C518]/10 w-6 h-6 rounded flex items-center justify-center text-xs">2</span>
+                                Divulgue
                             </div>
-                        )}
+                            <p className="text-gray-400 text-sm">Pegue seu link de afiliado e compartilhe nas redes sociais ou com amigos.</p>
+                        </div>
+                        <div className="bg-[#18181b] p-5 rounded-xl border border-[#3f3f46]">
+                            <div className="text-[#F5C518] font-bold text-lg mb-2 flex items-center gap-2">
+                                <span className="bg-[#F5C518]/10 w-6 h-6 rounded flex items-center justify-center text-xs">3</span>
+                                Receba
+                            </div>
+                            <p className="text-gray-400 text-sm">Acompanhe suas vendas em tempo real e receba seus lucros via Pix.</p>
+                        </div>
                     </div>
                 </div>
             </div>
