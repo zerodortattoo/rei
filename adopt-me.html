@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contas de Blox Fruits â€” Rei das Contas</title>
+  <meta name="description" content="Compre contas de Adopt Me com pets raros, neons e mega neons. Entrega automática, preços a partir de R$8. Rei das Contas!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="catalog.css" />
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo" id="home-logo">
+        <img src="assets/logo.png" alt="Rei das Contas" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">REI DAS CONTAS</span>
+          <span class="logo-sub">A Realeza dos Produtos Digitais</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">InÃ­cio</a></li>
+        <li><a href="index.html#categorias" class="nav-link">Categorias</a></li>
+        <li><a href="adopt-me.html" class="nav-link">Adopt Me!</a></li>
+        <li><a href="fisch.html" class="nav-link">Fisch</a></li>
+        <li><a href="https://discord.gg/KWUw8vBu" class="nav-link nav-discord" target="_blank" id="nav-discord-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.17.116 18.282.135 18.39a19.63 19.63 0 0 0 5.993 3.03.073.073 0 0 0 .08-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 12.994 12.994 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Discord
+        </a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- CATALOG HERO -->
+  <section class="catalog-hero">
+    <div class="catalog-hero-bg">
+      <img src="assets/adopt-me.png" alt="Blox Fruits" class="catalog-hero-img" />
+      <div class="catalog-hero-overlay"></div>
+    </div>
+    <div class="container catalog-hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">InÃ­cio</a>
+        <span>â€º</span>
+        <a href="index.html#categorias">Categorias</a>
+        <span>â€º</span>
+        <span class="breadcrumb-current">Blox Fruits</span>
+      </nav>
+      <div class="catalog-hero-badge">ðŸŽ® ROBLOX</div>
+      <h1 class="catalog-hero-title">
+        <span class="text-gold">Blox Fruits</span> â€” Contas Premium
+      </h1>
+      <p class="catalog-hero-desc">Frutas raras, gamepasses exclusivos, raÃ§as V4 e estilos de luta. Entrega instantÃ¢nea apÃ³s o pagamento!</p>
+      <div class="catalog-hero-stats">
+        <div class="stat-pill">ðŸ”¥ +50 produtos</div>
+        <div class="stat-pill">âš¡ Entrega instantÃ¢nea</div>
+        <div class="stat-pill">ðŸ‘‘ A partir de R$5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG FILTERS -->
+  <div class="catalog-filters-bar" id="filters-bar">
+    <div class="container filters-container">
+      <div class="filters-left">
+        <button class="filter-btn active" data-filter="all" id="filter-all">Todos</button>
+        <button class="filter-btn" data-filter="conta" id="filter-conta">Contas</button>
+        <button class="filter-btn" data-filter="fruta" id="filter-fruta">Frutas Garantidas</button>
+        <button class="filter-btn" data-filter="gamepass" id="filter-gamepass">Gamepasses</button>
+        <button class="filter-btn" data-filter="raca" id="filter-raca">RaÃ§as V4</button>
+      </div>
+      <div class="filters-right">
+        <select class="sort-select" id="sort-select" aria-label="Ordenar por">
+          <option value="price-asc">Menor preÃ§o</option>
+          <option value="price-desc">Maior preÃ§o</option>
+          <option value="popular">Mais populares</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS GRID -->
+  <section class="catalog-section">
+    <div class="container">
+      <div class="products-header">
+        <span class="products-count" id="products-count">Mostrando 12 produtos</span>
+      </div>
+      <div class="products-grid" id="products-grid">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card" data-category="conta" id="am-product-1">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #1a0030, #4a0060, #8B0000);">
+              ðŸ‰
+            </div>
+            <div class="product-badge badge-hot">ðŸ”¥ Hot</div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Conta</span>
+              <span class="tag">Fruta Dragon</span>
+            </div>
+            <h3 class="product-title">Conta Dragon V2 + Race V4</h3>
+            <p class="product-desc">Conta com fruta Dragon V2, corrida Ghoul V4, vÃ¡rios gamepasses e nÃ­vel 2550.</p>
+            <div class="product-features">
+              <div class="feature">âœ“ NÃ­vel 2550</div>
+              <div class="feature">âœ“ Dragon V2</div>
+              <div class="feature">âœ“ Ghoul V4</div>
+              <div class="feature">âœ“ Bounty alto</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 85</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-1">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card" data-category="fruta" id="am-product-2">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #001a40, #002a60, #0050a0);">
+              â„ï¸
+            </div>
+            <div class="product-badge badge-new">âœ¨ Novo</div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Fruta Garantida</span>
+              <span class="tag">Ice</span>
+            </div>
+            <h3 class="product-title">Conta Ice V2 Awakened</h3>
+            <p class="product-desc">Conta com fruta Ice V2 totalmente desperta, nÃ­vel 2450 e estilo de luta exclusivo.</p>
+            <div class="product-features">
+              <div class="feature">âœ“ NÃ­vel 2450</div>
+              <div class="feature">âœ“ Ice V2 Awakened</div>
+              <div class="feature">âœ“ Estilo de luta</div>
+              <div class="feature">âœ“ Conta verificada</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 45</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-2">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card" data-category="gamepass" id="am-product-3">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #2a1500, #6a3500, #D4AF37);">
+              ðŸŽ®
+            </div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Gamepass</span>
+              <span class="tag">Pack</span>
+            </div>
+            <h3 class="product-title">Pack Gamepass Completo</h3>
+            <p class="product-desc">Conta com todos os gamepasses: 2x EXP, 2x Mastery, Fruit Notifier e mais!</p>
+            <div class="product-features">
+              <div class="feature">âœ“ 2x EXP</div>
+              <div class="feature">âœ“ Fruit Notifier</div>
+              <div class="feature">âœ“ 2x Mastery</div>
+              <div class="feature">âœ“ Premium Storage</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 35</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-3">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card" data-category="conta" id="am-product-4">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #001a00, #003300, #006600);">
+              â˜ ï¸
+            </div>
+            <div class="product-badge badge-sale">ðŸ’¸ Oferta</div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Conta</span>
+              <span class="tag">Iniciante</span>
+            </div>
+            <h3 class="product-title">Conta Starter â€” NÃ­vel Max</h3>
+            <p class="product-desc">Conta para quem quer comeÃ§ar forte, jÃ¡ no nÃ­vel mÃ¡ximo com boas frutas.</p>
+            <div class="product-features">
+              <div class="feature">âœ“ NÃ­vel 2550</div>
+              <div class="feature">âœ“ Boa fruta</div>
+              <div class="feature">âœ“ Desbloqueado 3Âª Sea</div>
+              <div class="feature">âœ“ Ideal para iniciantes</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-old">R$ 20</span>
+                <span class="price-value">R$ 12</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-4">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 5 -->
+        <div class="product-card" data-category="raca" id="am-product-5">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #200020, #500050, #8B008B);">
+              ðŸ‘¹
+            </div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">RaÃ§a V4</span>
+              <span class="tag">Ghoul</span>
+            </div>
+            <h3 class="product-title">Conta Ghoul V4 + Leopard</h3>
+            <p class="product-desc">A combinaÃ§Ã£o mais OP do momento! Ghoul V4 + Fruta Leopard para o PVP definitivo.</p>
+            <div class="product-features">
+              <div class="feature">âœ“ Ghoul V4</div>
+              <div class="feature">âœ“ Leopard Awakened</div>
+              <div class="feature">âœ“ NÃ­vel 2550</div>
+              <div class="feature">âœ“ Build PVP</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 120</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-5">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 6 -->
+        <div class="product-card" data-category="fruta" id="am-product-6">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #1a0a00, #4a2000, #8B4513);">
+              ðŸ¦Š
+            </div>
+            <div class="product-badge badge-hot">ðŸ”¥ Raro</div>
+            <div class="product-stock">âš ï¸ Ãšltimas unidades</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Fruta Garantida</span>
+              <span class="tag">Kitsune</span>
+            </div>
+            <h3 class="product-title">Conta com Kitsune â€” Ultra Rara</h3>
+            <p class="product-desc">Fruta Kitsune, a mais rara do jogo! Conta verificada com nÃ­vel 2550 e race V4.</p>
+            <div class="product-features">
+              <div class="feature">âœ“ Kitsune (Ultra Rara)</div>
+              <div class="feature">âœ“ NÃ­vel 2550</div>
+              <div class="feature">âœ“ Race V4</div>
+              <div class="feature">âœ“ Alta demanda</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 250</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-6">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 7 -->
+        <div class="product-card" data-category="conta" id="am-product-7">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #0a0a30, #1a1a60, #2a2aaa);">
+              âš¡
+            </a>
+            </div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Conta</span>
+              <span class="tag">Lightning</span>
+            </div>
+            <h3 class="product-title">Conta Lightning V2 Speed Build</h3>
+            <p class="product-desc">Conta focada em velocidade e dano. Lightning V2 + estilo de luta Electric Claw.</p>
+            <div class="product-features">
+              <div class="feature">âœ“ Lightning V2</div>
+              <div class="feature">âœ“ Electric Claw</div>
+              <div class="feature">âœ“ NÃ­vel 2550</div>
+              <div class="feature">âœ“ Build Speed</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 28</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-7">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCT 8 -->
+        <div class="product-card" data-category="gamepass" id="am-product-8">
+          <div class="product-image-wrap">
+            <div class="product-image-placeholder" style="background: linear-gradient(135deg, #1a1000, #3a2800, #D4AF37);">
+              ðŸŽ
+            </div>
+            <div class="product-badge badge-new">âœ¨ Novo</div>
+            <div class="product-stock">âœ… Em estoque</div>
+          </div>
+          <div class="product-content">
+            <div class="product-tags">
+              <span class="tag">Gamepass</span>
+              <span class="tag">Fruit Notifier</span>
+            </div>
+            <h3 class="product-title">Conta sÃ³ com Fruit Notifier</h3>
+            <p class="product-desc">Conta limpa com Fruit Notifier ativo â€” notificaÃ§Ã£o de frutas em tempo real!</p>
+            <div class="product-features">
+              <div class="feature">âœ“ Fruit Notifier</div>
+              <div class="feature">âœ“ Conta limpa</div>
+              <div class="feature">âœ“ FÃ¡cil de usar</div>
+              <div class="feature">âœ“ Verificada</div>
+            </div>
+            <div class="product-footer">
+              <div class="product-price">
+                <span class="price-from">A partir de</span>
+                <span class="price-value">R$ 18</span>
+              </div>
+              <a href="https://discord.gg/KWUw8vBu" class="btn-buy" target="_blank" id="buy-8">
+                Comprar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA DISCORD -->
+      <div class="catalog-discord-cta" id="catalog-discord-cta">
+        <div class="discord-cta-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.17.116 18.282.135 18.39a19.63 19.63 0 0 0 5.993 3.03.073.073 0 0 0 .08-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 12.994 12.994 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+        </div>
+        <div>
+          <h3>NÃ£o encontrou o que procura?</h3>
+          <p>Entre no nosso Discord e fale com a equipe. Temos ainda mais produtos disponÃ­veis!</p>
+        </div>
+        <a href="https://discord.gg/KWUw8vBu" class="btn btn-ghost" target="_blank" id="catalog-discord-btn">Abrir Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER MINI -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/logo.png" alt="Rei das Contas" class="footer-logo-img" />
+            <div>
+              <div class="footer-logo-title">REI DAS CONTAS</div>
+              <div class="footer-logo-sub">A Realeza dos Produtos Digitais</div>
+            </div>
+          </div>
+          <p class="footer-desc">A melhor loja de contas e produtos digitais para gamers.</p>
+          <div class="footer-socials">
+            <a href="https://discord.gg/KWUw8vBu" class="social-link" target="_blank" id="footer-discord" aria-label="Discord">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.17.116 18.282.135 18.39a19.63 19.63 0 0 0 5.993 3.03.073.073 0 0 0 .08-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 12.994 12.994 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="blox-fruits.html" id="footer-blox">Blox Fruits</a></li>
+            <li><a href="adopt-me.html" id="footer-adopt">Adopt Me!</a></li>
+            <li><a href="fisch.html" id="footer-fisch">Fisch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Suporte</h4>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/KWUw8vBu" target="_blank" id="footer-support-discord">Discord</a></li>
+            <li><a href="index.html#faq" id="footer-support-faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Â© 2026 Rei das Contas. Todos os direitos reservados. NÃ£o somos afiliados Ã  Roblox Corporation.</p>
+        <div class="footer-payment">
+          <span>ðŸ’³ PIX</span><span>ðŸ’³ CartÃ£o</span><span>ðŸ’³ Boleto</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="catalog.js"></script>
+</body>
+</html>
+
+
+

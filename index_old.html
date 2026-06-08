@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rei das Contas — A Realeza dos Produtos Digitais</title>
+  <meta name="description" content="Compre contas premium de Roblox, Blox Fruits, Adopt Me, Fisch e muito mais. Entrega automática, preços imbatíveis e suporte 24h. Seja tratado como realeza!" />
+  <meta property="og:title" content="Rei das Contas — A Realeza dos Produtos Digitais" />
+  <meta property="og:description" content="Contas premium de Roblox com entrega automática. Blox Fruits, Adopt Me, Fisch e mais!" />
+  <meta property="og:url" content="https://www.reidascontas.com.br" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- PARTICLES BACKGROUND -->
+  <div class="particles" id="particles"></div>
+
+  <!-- HEADER / NAV -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="/" class="logo" id="home-logo">
+        <img src="assets/logo.png" alt="Rei das Contas" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">REI DAS CONTAS</span>
+          <span class="logo-sub">A Realeza dos Produtos Digitais</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#categorias" class="nav-link">Categorias</a></li>
+        <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="https://discord.gg/KWUw8vBu" class="nav-link nav-discord" target="_blank" id="nav-discord-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.17.116 18.282.135 18.39a19.63 19.63 0 0 0 5.993 3.03.073.073 0 0 0 .08-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 12.994 12.994 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Discord
+        </a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+      <div class="hero-glow hero-glow-3"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        👑 +2.000 clientes satisfeitos
+      </div>
+      <h1 class="hero-title">
+        A <span class="text-gold">Realeza</span> dos<br/>
+        Produtos Digitais
+      </h1>
+      <p class="hero-desc">
+        Contas premium de Roblox e muito mais. Entrega <strong>automática e instantânea</strong>, 
+        preços imbatíveis e suporte real. Aqui você é tratado como rei! 👑
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">+2K</span>
+          <span class="stat-label">Clientes</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">99%</span>
+          <span class="stat-label">Satisfação</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">24h</span>
+          <span class="stat-label">Suporte</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">PIX</span>
+          <span class="stat-label">Pagamento</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#categorias" class="btn btn-primary" id="hero-cta-btn">
+          👑 Ver Categorias
+        </a>
+        <a href="https://discord.gg/KWUw8vBu" class="btn btn-ghost" target="_blank" id="hero-discord-btn">
+          Entrar no Discord
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-indicator"></div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-container">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Compra 100% Segura</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        <span>Entrega Instantânea</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.11 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.09a16 16 0 0 0 6 6l.46-.46a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Suporte 24h no Discord</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+        <span>Produtos Verificados</span>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <span>PIX • Cartão • Boleto</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="categorias">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">👑 Escolha sua categoria</div>
+        <h2 class="section-title">Em qual <span class="text-gold">Reino</span> você quer dominar?</h2>
+        <p class="section-desc">Selecione o game e conquiste nossa seleção exclusiva de contas raras com entrega automática</p>
+      </div>
+
+      <div class="categories-grid" id="categories-grid">
+
+        <!-- BLOX FRUITS -->
+        <a href="blox-fruits.html" class="category-card" id="card-blox-fruits">
+          <div class="card-image-wrap">
+            <img src="assets/blox-fruits.png" alt="Blox Fruits" class="card-image" />
+            <div class="card-overlay"></div>
+            <div class="card-badge hot">🔥 Mais Vendido</div>
+          </div>
+          <div class="card-content">
+            <div class="card-game-tag">ROBLOX</div>
+            <h3 class="card-title">Blox Fruits</h3>
+            <p class="card-desc">Contas com frutas raras, gamepasses, raças V4, estilos de luta e muito mais!</p>
+            <div class="card-meta">
+              <div class="card-price">A partir de <strong>R$ 1,99</strong></div>
+              <div class="card-items">10 produtos</div>
+            </div>
+            <div class="card-cta">
+              Ver Ofertas
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- ADOPT ME — EM BREVE -->
+        <div class="category-card card-coming-soon" id="card-adopt-me">
+          <div class="coming-soon-inner">
+            <div class="coming-soon-icon">🐾</div>
+            <div class="card-game-tag" style="opacity:0.5">ROBLOX</div>
+            <h3 class="card-title">Adopt Me!</h3>
+            <p class="card-desc">Pets ultra raros, contas completas com legendários, neons e mega neons!</p>
+            <span class="badge-coming-soon">🔜 Em Breve</span>
+          </div>
+        </div>
+
+        <!-- FISCH — EM BREVE -->
+        <div class="category-card card-coming-soon" id="card-fisch">
+          <div class="coming-soon-inner">
+            <div class="coming-soon-icon">🎣</div>
+            <div class="card-game-tag" style="opacity:0.5">ROBLOX</div>
+            <h3 class="card-title">Fisch</h3>
+            <p class="card-desc">Contas com peixes lendários, itens raros e equipamentos de alto nível!</p>
+            <span class="badge-coming-soon">🔜 Em Breve</span>
+          </div>
+        </div>
+
+        <!-- MAIS EM BREVE -->
+        <div class="category-card card-coming-soon" id="card-coming-soon">
+          <div class="coming-soon-inner">
+            <div class="coming-soon-icon">👑</div>
+            <h3 class="card-title">Mais Reinos</h3>
+            <p class="card-desc">Novos jogos chegando em breve! Entre no Discord e seja o primeiro a saber.</p>
+            <a href="https://discord.gg/KWUw8vBu" class="btn btn-ghost btn-sm" target="_blank" id="coming-discord-btn">
+              Entrar no Discord
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="como-funciona">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">🚀 Simples e rápido</div>
+        <h2 class="section-title">Como <span class="text-gold">funciona</span>?</h2>
+        <p class="section-desc">Em menos de 2 minutos você já tem sua conta em mãos</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step" id="step-1">
+          <div class="step-number">01</div>
+          <div class="step-icon">🎮</div>
+          <h3 class="step-title">Escolha o Jogo</h3>
+          <p class="step-desc">Selecione a categoria do jogo que você quer e navegue pelos produtos disponíveis.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step" id="step-2">
+          <div class="step-number">02</div>
+          <div class="step-icon">🛒</div>
+          <h3 class="step-title">Escolha o Produto</h3>
+          <p class="step-desc">Filtre por preço, raridade e características. Encontre a conta perfeita para você.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step" id="step-3">
+          <div class="step-number">03</div>
+          <div class="step-icon">💳</div>
+          <h3 class="step-title">Pague com PIX</h3>
+          <p class="step-desc">Pagamento via PIX, cartão ou boleto. 100% seguro e processado instantaneamente.</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step" id="step-4">
+          <div class="step-number">04</div>
+          <div class="step-icon">⚡</div>
+          <h3 class="step-title">Receba na Hora</h3>
+          <p class="step-desc">Entrega automática imediatamente após a confirmação do pagamento. Sem espera!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">⭐ Depoimentos</div>
+        <h2 class="section-title">O que nossos <span class="text-gold">reis</span> dizem</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" id="testimonial-1">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Comprei uma conta de Blox Fruits e chegou na hora! Incrível demais, já comprei 3 vezes aqui."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">G</div>
+            <div>
+              <div class="author-name">Gustavo R.</div>
+              <div class="author-game">Blox Fruits</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" id="testimonial-2">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Melhor loja que já comprei! Conta veio exatamente como descrito, suporte top também!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Maria L.</div>
+              <div class="author-game">Adopt Me!</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" id="testimonial-3">
+          <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Preço justo, entrega rápida. O suporte no Discord é muito atencioso. Recomendo!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div>
+              <div class="author-name">Pedro S.</div>
+              <div class="author-game">Fisch</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">❓ Dúvidas</div>
+        <h2 class="section-title">Perguntas <span class="text-gold">Frequentes</span></h2>
+      </div>
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item" id="faq-1">
+          <button class="faq-question" aria-expanded="false">
+            Como a entrega funciona?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>A entrega é 100% digital e automática! Logo após a confirmação do pagamento, você recebe as informações de acesso diretamente na plataforma. Sem precisar esperar atendimento humano.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-2">
+          <button class="faq-question" aria-expanded="false">
+            Quais formas de pagamento são aceitas?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Aceitamos PIX (com aprovação instantânea), cartão de crédito e boleto bancário. Todos os pagamentos são processados com segurança e criptografia.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-3">
+          <button class="faq-question" aria-expanded="false">
+            Os produtos são originais e verificados?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! Todos os produtos são verificados pela nossa equipe antes de serem listados. Garantimos que as informações estão corretas e os itens são legítimos.</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-4">
+          <button class="faq-question" aria-expanded="false">
+            E se eu tiver algum problema?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Nosso suporte está disponível 24h pelo Discord. Basta abrir um ticket na categoria de suporte com o comprovante de compra e nossa equipe te ajuda em até 24h!</p>
+          </div>
+        </div>
+        <div class="faq-item" id="faq-5">
+          <button class="faq-question" aria-expanded="false">
+            Posso confiar nessa loja?
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Com mais de 2.000 clientes satisfeitos e 99% de avaliações positivas, somos referência em contas de jogos digitais. Nosso Discord tem toda a nossa reputação disponível para conferir.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section" id="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+          <div class="cta-crown">👑</div>
+          <h2 class="cta-title">Pronto para reinar?</h2>
+          <p class="cta-desc">Entre no nosso Discord e fique por dentro das promoções exclusivas, lançamentos e muito mais!</p>
+          <a href="https://discord.gg/KWUw8vBu" class="btn btn-primary btn-lg" target="_blank" id="cta-discord-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.17.116 18.282.135 18.39a19.63 19.63 0 0 0 5.993 3.03.073.073 0 0 0 .08-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 12.994 12.994 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            Entrar no Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/logo.png" alt="Rei das Contas" class="footer-logo-img" />
+            <div>
+              <div class="footer-logo-title">REI DAS CONTAS</div>
+              <div class="footer-logo-sub">A Realeza dos Produtos Digitais</div>
+            </div>
+          </div>
+          <p class="footer-desc">A melhor loja de contas e produtos digitais para gamers. Segurança, agilidade e suporte de verdade.</p>
+          <div class="footer-socials">
+            <a href="https://discord.gg/KWUw8vBu" class="social-link" target="_blank" id="footer-discord" aria-label="Discord">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.17.116 18.282.135 18.39a19.63 19.63 0 0 0 5.993 3.03.073.073 0 0 0 .08-.027c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 12.994 12.994 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@ReiDasContasOFC" class="social-link" target="_blank" id="footer-youtube" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/reidascontasoficial/" class="social-link" target="_blank" id="footer-instagram" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="/" id="footer-home">Início</a></li>
+            <li><a href="#categorias" id="footer-categories">Categorias</a></li>
+            <li><a href="#como-funciona" id="footer-how">Como Funciona</a></li>
+            <li><a href="#faq" id="footer-faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="blox-fruits.html" id="footer-blox">Blox Fruits</a></li>
+            <li><a href="adopt-me.html" id="footer-adopt">Adopt Me!</a></li>
+            <li><a href="fisch.html" id="footer-fisch">Fisch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Suporte</h4>
+          <ul class="footer-links">
+            <li><a href="https://discord.gg/KWUw8vBu" target="_blank" id="footer-support-discord">Discord</a></li>
+            <li><a href="#faq" id="footer-support-faq">Perguntas Frequentes</a></li>
+            <li><a href="termos.html" id="footer-terms">Termos de Uso</a></li>
+            <li><a href="privacidade.html" id="footer-privacy">Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Rei das Contas. Todos os direitos reservados. Não somos afiliados à Roblox Corporation.</p>
+        <div class="footer-payment">
+          <span>💳 PIX</span>
+          <span>💳 Cartão</span>
+          <span>💳 Boleto</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Rei das Contas</title>
+  <meta name="description" content="Finalize seu pedido com pagamento PIX instantâneo. Rei das Contas — entrega automática!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .checkout-page { padding: 100px 0 60px; min-height: 100vh; position: relative; z-index: 1; }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .checkout-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .checkout-card h2 {
+      font-family: var(--font-royal);
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    /* Product summary */
+    .product-summary-icon { font-size: 3rem; text-align: center; margin-bottom: 16px; }
+    .product-summary-name {
+      font-family: var(--font-royal);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .product-summary-cat {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--crimson-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .product-summary-price {
+      text-align: center;
+      font-family: var(--font-royal);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .product-summary-features {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .product-summary-features .feat {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Form */
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      transition: var(--transition);
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+    }
+    .form-group input::placeholder { color: var(--text-muted); }
+
+    .btn-pix {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+      color: #0A0A0F;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-body);
+    }
+    .btn-pix:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,175,55,0.4); }
+    .btn-pix:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .secure-text {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* PIX Section */
+    .pix-section, .success-section { display: none; max-width: 520px; margin: 40px auto 0; }
+    .pix-section.active, .success-section.active { display: block; animation: fade-up 0.5s ease; }
+
+    .pix-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .pix-card h3 {
+      font-family: var(--font-royal);
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .qr-wrap {
+      display: inline-block;
+      padding: 16px;
+      background: #fff;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .qr-wrap img { width: 200px; height: 200px; }
+
+    .pix-code-wrap {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .pix-code-wrap input {
+      flex: 1;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-family: monospace;
+    }
+    .btn-copy {
+      padding: 10px 16px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: var(--radius-sm);
+      color: var(--gold);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-copy:hover { background: rgba(212,175,55,0.2); }
+
+    .countdown {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .countdown span { color: var(--gold); font-weight: 700; font-family: monospace; }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(234,179,8,0.08);
+      border: 1px solid rgba(234,179,8,0.2);
+      border-radius: 50px;
+      color: #eab308;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(234,179,8,0.3);
+      border-top-color: #eab308;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Success */
+    .success-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .success-icon { font-size: 4rem; margin-bottom: 16px; animation: bounce-in 0.5s ease; }
+    @keyframes bounce-in {
+      0% { transform: scale(0); } 50% { transform: scale(1.2); } 100% { transform: scale(1); }
+    }
+    .success-card h3 {
+      font-family: var(--font-royal);
+      font-size: 1.4rem;
+      color: #4ade80;
+      margin-bottom: 8px;
+    }
+    .success-card .subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 28px; }
+
+    .credentials-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--gold);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    .credentials-box .cred-label {
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .cred-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .cred-row:last-of-type { border-bottom: none; }
+    .cred-row .cred-key { font-size: 0.82rem; color: var(--text-muted); min-width: 70px; }
+    .cred-row .cred-val {
+      flex: 1;
+      font-family: monospace;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.05);
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    .cred-row .btn-copy-sm {
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 4px;
+      color: var(--gold);
+      cursor: pointer;
+    }
+    .cred-warning {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: #eab308;
+      line-height: 1.5;
+    }
+    .success-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+
+    .error-toast {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(220,20,60,0.9);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      z-index: 200;
+      backdrop-filter: blur(10px);
+    }
+    .error-toast.active { display: block; animation: fade-up 0.3s ease; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .checkout-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <!-- HEADER -->
+  <header class="header scrolled" id="header">
+    <nav class="nav container">
+      <a href="index.html" class="logo" id="home-logo">
+        <img src="assets/logo.png" alt="Rei das Contas" class="logo-img" />
+        <div class="logo-text">
+          <span class="logo-title">REI DAS CONTAS</span>
+          <span class="logo-sub">A Realeza dos Produtos Digitais</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Início</a></li>
+        <li><a href="blox-fruits.html" class="nav-link">Blox Fruits</a></li>
+        <li><a href="pedidos.html" class="nav-link">Meus Pedidos</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ERROR TOAST -->
+  <div class="error-toast" id="error-toast"></div>
+
+  <!-- CHECKOUT -->
+  <section class="checkout-page">
+    <div class="container">
+
+      <div class="checkout-grid" id="checkout-form-area">
+        <!-- Product Summary -->
+        <div class="checkout-card">
+          <h2>📦 Resumo do Produto</h2>
+          <div class="product-summary-icon" id="prod-icon">⚔️</div>
+          <div class="product-summary-name" id="prod-name">Carregando...</div>
+          <div class="product-summary-cat" id="prod-cat">BLOX FRUITS</div>
+          <div class="product-summary-price" id="prod-price">R$ --</div>
+          <div class="product-summary-features" id="prod-features">
+            <div class="feat">✓ Carregando detalhes...</div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="checkout-card">
+          <h2>🛒 Complete seu Pedido</h2>
+          <form id="checkout-form" onsubmit="return false;">
+            <div class="form-group">
+              <label for="buyer-name">Nome completo *</label>
+              <input type="text" id="buyer-name" placeholder="Seu nome" required />
+            </div>
+            <div class="form-group">
+              <label for="buyer-email">E-mail *</label>
+              <input type="email" id="buyer-email" placeholder="seuemail@gmail.com" required />
+            </div>
+            <div class="form-group">
+              <label for="buyer-phone">WhatsApp (opcional)</label>
+              <input type="tel" id="buyer-phone" placeholder="+55 11 99999-9999" />
+            </div>
+            <button type="button" class="btn-pix" id="btn-generate-pix" onclick="generatePix()">
+              🔑 Gerar QR Code PIX
+            </button>
+            <p class="secure-text">🔒 Pagamento 100% seguro via Mercado Pago</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- PIX SECTION -->
+      <div class="pix-section" id="pix-section">
+        <div class="pix-card">
+          <h3>Escaneie o QR Code para pagar</h3>
+          <div class="qr-wrap">
+            <img id="qr-code-img" src="" alt="QR Code PIX" />
+          </div>
+          <div class="pix-code-wrap">
+            <input type="text" id="pix-code" readonly value="" />
+            <button class="btn-copy" onclick="copyPix()">📋 Copiar</button>
+          </div>
+          <div class="countdown">⏱ QR Code válido por: <span id="countdown-timer">15:00</span></div>
+          <div class="status-indicator" id="payment-status">
+            <div class="spinner"></div>
+            Aguardando pagamento...
+          </div>
+        </div>
+      </div>
+
+      <!-- SUCCESS SECTION -->
+      <div class="success-section" id="success-section">
+        <div class="success-card">
+          <div class="success-icon">✅</div>
+          <h3>Pagamento Aprovado! 🎉</h3>
+          <p class="subtitle">Sua conta está pronta!</p>
+
+          <div class="credentials-box">
+            <div class="cred-label">🔑 Dados de Acesso</div>
+            <div class="cred-row">
+              <span class="cred-key">Usuário:</span>
+              <span class="cred-val" id="account-user">---</span>
+              <button class="btn-copy-sm" onclick="copyText('account-user')">Copiar</button>
+            </div>
+            <div class="cred-row">
+              <span class="cred-key">Senha:</span>
+              <span class="cred-val" id="account-pass">---</span>
+              <button class="btn-copy-sm" onclick="copyText('account-pass')">Copiar</button>
+            </div>
+            <div class="cred-warning">⚠️ Anote esses dados agora! Recomendamos trocar a senha após o primeiro acesso. Grave a tela ao fazer login para garantia anti-hackback.</div>
+          </div>
+
+          <div class="success-actions">
+            <a href="pedidos.html" class="btn btn-primary">Ver meus pedidos</a>
+            <a href="blox-fruits.html" class="btn btn-ghost">Comprar mais</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="padding: 20px 0;">
+        <p>© 2026 Rei das Contas. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // ========================
+    // CONFIG
+    // ========================
+    const API_URL = 'http://localhost:3001';
+
+    // ========================
+    // PRODUCT DATA (local fallback — matches blox-fruits.html)
+    // ========================
+    const PRODUCTS = {
+      'product-1':  { icon: '⚔️', name: 'Conta Nível 1000+ com Frutas e Melee', price: 1.99, cat: 'BLOX FRUITS', features: ['Nível 1000+','1 a 8 Melee','1 a 39 Frutas no inv.','Acessórios bônus','Espada Lendária (sort)','Belly bônus'] },
+      'product-2':  { icon: '💰', name: 'Conta Nível 700+ — 2M de Belly para Gacha', price: 2.49, cat: 'BLOX FRUITS', features: ['Nível 700+','2M+ de Belly','Frutas aleatórias','Pronto pro gacha'] },
+      'product-3':  { icon: '🥋', name: 'Conta Nível MAX 2800 + Godhuman', price: 4.99, cat: 'BLOX FRUITS', features: ['Nível MAX 2800','Godhuman','Fruta bônus (1-39)','Belly bônus','Hallow Scythe (sort)','CDK (sort)'] },
+      'product-4':  { icon: '🗡️', name: 'Conta MAX 2800 — Godhuman + Melee V2 Completo', price: 7.99, cat: 'BLOX FRUITS', features: ['Nível MAX 2800','Godhuman + V2 Completo','1 a 6 Melee V2','1 a 9 Espadas Lend.','Fruta Awaken/Rara/Mítica','Acessórios + Belly'] },
+      'product-5':  { icon: '🦖', name: 'Conta com Fruta T-REX — Nível MAX 2800', price: 9.99, cat: 'BLOX FRUITS', features: ['T-Rex no inventário','Nível MAX 2800','1 a 6 Melee V2','1 a 9 Espadas Lend.','Belly bônus','Anti-hackback'] },
+      'product-6':  { icon: '🎸', name: 'Full Build — Godhuman + CDK + Soul Guitar', price: 16.99, cat: 'BLOX FRUITS', features: ['Nível MAX 2800','Todos Melee V1 e V2','CDK garantido','Soul Guitar garantida','1 a 3 Espadas Míticas','Fruta Awaken/Mítica'] },
+      'product-7':  { icon: '👁️', name: 'Conta Raça V4 T1 Awakening + Godhuman + CDK', price: 19.99, cat: 'BLOX FRUITS', features: ['Raça V4 T1 Awakening','Nível MAX 2800','Godhuman + Melee V2','CDK bônus','1 a 9 Espadas Lend.','Fruta Mítica/Rara'] },
+      'product-8':  { icon: '🦊', name: 'Conta com Fruta KITSUNE — A Mais Rara!', price: 22.99, cat: 'BLOX FRUITS', features: ['🦊 KITSUNE garantida','Nível MAX 2800','1 a 6 Melee V2','1 a 9 Espadas Lend.','Belly bônus','Anti-hackback'] },
+      'product-9':  { icon: '⚡', name: 'Raça V4 Full Gear — Conta Definitiva PVP', price: 27.99, cat: 'BLOX FRUITS', features: ['Raça V4 Full Gear T10','Nível MAX 2800','Todos Melee V1 e V2','CDK garantido','Dark Coat (sort)','Soul Guitar (sort)'] },
+      'product-10': { icon: '🤖', name: 'Cyborg V4 + Godhuman + CDK + Soul Guitar', price: 29.99, cat: 'BLOX FRUITS', features: ['Cyborg V4 Full Gear','Soul Guitar GARANTIDA','CDK GARANTIDO','Todos Melee V1 e V2','Fruta Mítica/Rara','1 a 9 Espadas Lend.'] },
+    };
+
+    // ========================
+    // STATE
+    // ========================
+    let currentPaymentId = null;
+    let currentSaleId = null;
+    let pollingInterval = null;
+    let countdownSeconds = 15 * 60;
+    let countdownInterval = null;
+
+    // ========================
+    // INIT — load product from URL
+    // ========================
+    (function init() {
+      const params = new URLSearchParams(window.location.search);
+      const pid = params.get('produto') || 'product-1';
+      const p = PRODUCTS[pid];
+      if (p) {
+        document.getElementById('prod-icon').textContent = p.icon;
+        document.getElementById('prod-name').textContent = p.name;
+        document.getElementById('prod-cat').textContent = p.cat;
+        document.getElementById('prod-price').textContent = 'R$ ' + p.price.toFixed(2).replace('.', ',');
+        document.getElementById('prod-features').innerHTML = p.features.map(f => `<div class="feat">✓ ${f}</div>`).join('');
+      }
+    })();
+
+    // ========================
+    // GENERATE PIX
+    // ========================
+    async function generatePix() {
+      const name = document.getElementById('buyer-name').value.trim();
+      const email = document.getElementById('buyer-email').value.trim();
+      const phone = document.getElementById('buyer-phone').value.trim();
+
+      if (!name || !email) { showError('Preencha nome e e-mail!'); return; }
+
+      const btn = document.getElementById('btn-generate-pix');
+      btn.disabled = true;
+      btn.textContent = '⏳ Gerando PIX...';
+
+      const params = new URLSearchParams(window.location.search);
+      const pid = params.get('produto') || 'product-1';
+
+      try {
+        const res = await fetch(`${API_URL}/api/create-payment`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ productId: pid, buyerName: name, buyerEmail: email, buyerPhone: phone })
+        });
+        const data = await res.json();
+
+        if (!data.success) throw new Error(data.error || 'Erro ao criar pagamento');
+
+        currentPaymentId = data.paymentId;
+        currentSaleId = data.saleId;
+
+        // Show QR Code
+        if (data.qrCodeBase64) {
+          document.getElementById('qr-code-img').src = `data:image/png;base64,${data.qrCodeBase64}`;
+        }
+        if (data.qrCode) {
+          document.getElementById('pix-code').value = data.qrCode;
+        }
+
+        document.getElementById('checkout-form-area').style.display = 'none';
+        document.getElementById('pix-section').classList.add('active');
+
+        startPolling();
+        startCountdown();
+
+      } catch (err) {
+        showError(err.message || 'Erro ao gerar PIX. Tente novamente.');
+        btn.disabled = false;
+        btn.textContent = '🔑 Gerar QR Code PIX';
+      }
+    }
+
+    // ========================
+    // POLLING
+    // ========================
+    function startPolling() {
+      pollingInterval = setInterval(async () => {
+        try {
+          const res = await fetch(`${API_URL}/api/payment-status/${currentPaymentId}`);
+          const data = await res.json();
+
+          if (data.status === 'approved') {
+            clearInterval(pollingInterval);
+            clearInterval(countdownInterval);
+            showSuccess(data.credentials);
+          }
+        } catch (e) { /* silent retry */ }
+      }, 3000);
+    }
+
+    // ========================
+    // COUNTDOWN
+    // ========================
+    function startCountdown() {
+      countdownSeconds = 15 * 60;
+      countdownInterval = setInterval(() => {
+        countdownSeconds--;
+        const m = Math.floor(countdownSeconds / 60).toString().padStart(2, '0');
+        const s = (countdownSeconds % 60).toString().padStart(2, '0');
+        document.getElementById('countdown-timer').textContent = `${m}:${s}`;
+        if (countdownSeconds <= 0) {
+          clearInterval(countdownInterval);
+          clearInterval(pollingInterval);
+          showError('QR Code expirado. Recarregue a página para tentar novamente.');
+        }
+      }, 1000);
+    }
+
+    // ========================
+    // SUCCESS
+    // ========================
+    function showSuccess(credentials) {
+      document.getElementById('pix-section').classList.remove('active');
+      document.getElementById('success-section').classList.add('active');
+
+      if (credentials) {
+        const parts = credentials.split(':');
+        document.getElementById('account-user').textContent = parts[0] || credentials;
+        document.getElementById('account-pass').textContent = parts[1] || '(ver no Discord)';
+      } else {
+        document.getElementById('account-user').textContent = 'Entrega em andamento...';
+        document.getElementById('account-pass').textContent = 'Acesse "Meus Pedidos" em alguns minutos';
+      }
+    }
+
+    // ========================
+    // UTILS
+    // ========================
+    function copyPix() {
+      const code = document.getElementById('pix-code').value;
+      navigator.clipboard.writeText(code);
+      const btn = document.querySelector('.pix-code-wrap .btn-copy');
+      btn.textContent = '✅ Copiado!';
+      setTimeout(() => btn.textContent = '📋 Copiar', 2000);
+    }
+
+    function copyText(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text);
+      const btn = document.getElementById(id).parentElement.querySelector('.btn-copy-sm');
+      if (btn) { btn.textContent = '✅'; setTimeout(() => btn.textContent = 'Copiar', 1500); }
+    }
+
+    function showError(msg) {
+      const t = document.getElementById('error-toast');
+      t.textContent = '❌ ' + msg;
+      t.classList.add('active');
+      setTimeout(() => t.classList.remove('active'), 4000);
+    }
+  </script>
+</body>
+</html>
